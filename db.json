@@ -1,0 +1,25 @@
+{
+  "enquiry": [
+    {
+      "firstName": "AR",
+      "lastName": "JOY",
+      "email": "a@gmail.com",
+      "mobile": "01714969696",
+      "weight": 72,
+      "height": 2,
+      "bmi": 18,
+      "bmiResult": "Underweight",
+      "gender": "Male",
+      "requireTrainer": "Yes",
+      "package": "Yearly",
+      "important": [
+        "Energy and Endurance",
+        "Building Lean Muscle",
+        "Fitness"
+      ],
+      "haveGymBefore": "No",
+      "enquiryDate": "2023-05-12T18:00:00.000Z",
+      "id": 1
+    }
+  ]
+}

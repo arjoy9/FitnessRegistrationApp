@@ -47,7 +47,7 @@
             <div class="col-md-6">
                 <mat-form-field appearance="outline">
                     <mat-label>Height</mat-label>
-                    <input formControlName="height" type="number"   matInput placeholder="Enter Mobile">
+                    <input [readonly]="!this.registrationForm.value?.weight" formControlName="height" type="number"   matInput placeholder="Enter Mobile">
                     <mat-icon matSuffix><i class="fa fa-text-height" aria-hidden="true"></i></mat-icon>
                     <mat-hint>Unit is meters</mat-hint>
                   </mat-form-field>
@@ -63,7 +63,7 @@
             <div class="col-md-6">
                 <mat-form-field appearance="outline">
                     <mat-label>BMI Result</mat-label>
-                    <input readonly formControlName="bmiResult" type="number"  matInput placeholder="BMI Result">
+                    <input readonly formControlName="bmiResult"  matInput placeholder="BMI Result">
                     <mat-icon matSuffix><i class="fa fa-check" aria-hidden="true"></i></mat-icon>
                     <!-- <mat-hint>Unit is meters</mat-hint> -->
                   </mat-form-field>
