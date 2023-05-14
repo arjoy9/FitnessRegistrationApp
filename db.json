@@ -20,6 +20,50 @@
       "haveGymBefore": "No",
       "enquiryDate": "2023-05-12T18:00:00.000Z",
       "id": 1
+    },
+    {
+      "firstName": "Sabbir",
+      "lastName": "Shikder",
+      "email": "s@gmail.com",
+      "mobile": "01719635656",
+      "weight": 66,
+      "height": 1.7,
+      "bmi": 22.837370242214536,
+      "bmiResult": "Normalweight",
+      "gender": "Male",
+      "requireTrainer": "Yes",
+      "package": "Monthly",
+      "important": [
+        "Healthier Digestive System",
+        "Suger craving Body",
+        "Fitness"
+      ],
+      "haveGymBefore": "No",
+      "enquiryDate": "2023-05-13T18:00:00.000Z",
+      "id": 2
+    },
+    {
+      "firstName": "Tamanna",
+      "lastName": "Rahman",
+      "email": "t@gmail.com",
+      "mobile": "01814563256",
+      "weight": 75,
+      "height": 1.8,
+      "bmi": 23.148148148148145,
+      "bmiResult": "Normalweight",
+      "gender": "Female",
+      "requireTrainer": "Yes",
+      "package": "Quarterly",
+      "important": [
+        "Toxic Fat reduction",
+        "Energy and Endurance",
+        "Building Lean Muscle",
+        "Suger craving Body",
+        "Fitness"
+      ],
+      "haveGymBefore": "Yes",
+      "enquiryDate": "2023-05-13T18:00:00.000Z",
+      "id": 3
     }
   ]
 }
