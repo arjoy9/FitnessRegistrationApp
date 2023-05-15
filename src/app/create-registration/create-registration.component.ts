@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ApiService } from '../services/api.service';
 import { NgToastService } from 'ng-angular-popup';
+import { ActivatedRoute, Router } from '@angular/router';
+import { user } from '../models/user.model';
 
 @Component({
   selector: 'app-create-registration',
@@ -22,8 +24,14 @@ export class CreateRegistrationComponent implements OnInit {
   ];
 
   public registrationForm!: FormGroup;
+  public userIdToUpdate!:number;
+  public isUpdateActive:boolean =false;
 
-  constructor(private fb:FormBuilder, private api:ApiService, private toast:NgToastService){}
+  constructor(private fb:FormBuilder,
+    private activetedRoute:ActivatedRoute ,
+    private router:Router,
+    private api:ApiService, 
+    private toast:NgToastService){}
 
   ngOnInit(): void {
     this.registrationForm = this.fb.group({
@@ -41,10 +49,22 @@ export class CreateRegistrationComponent implements OnInit {
       important:[''],
       haveGymBefore:[''],
       enquiryDate:['']
+
     });
     this.registrationForm.controls['height'].valueChanges.subscribe((res)=>{
       this.calculateBmi(res);
     });
+
+    // for get update value in form by activeted Router
+    this.activetedRoute.params.subscribe(val=>{
+      this.userIdToUpdate = val['id'];
+      this.api.getRegisteredUserId(this.userIdToUpdate)
+      .subscribe(res=>{
+        // console.warn(res);
+         this.isUpdateActive=true;
+        this.fillFormToUpdate(res);
+      });
+    })
   }
 
   submit(){
@@ -55,6 +75,16 @@ export class CreateRegistrationComponent implements OnInit {
       this.registrationForm.reset();
     })   
   }
+
+  update(){
+    this.api.updateRegisteredUser(this.registrationForm.value, this.userIdToUpdate)
+    .subscribe(res=>{
+      this.toast.success({detail:"Success",summary:"Enquiry Updated ",duration:5000});
+      this.registrationForm.reset();
+      this.router.navigate(['list']);
+    })
+  }
+
   calculateBmi(heightValue:number){
     const weight = this.registrationForm.value.weight;
     const height = heightValue;
@@ -74,5 +104,24 @@ export class CreateRegistrationComponent implements OnInit {
         this.registrationForm.controls['bmiResult'].patchValue("Obese");
         break;
     }
+  }
+
+  fillFormToUpdate(user: user){
+    this.registrationForm.setValue({
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      mobile: user.mobile,
+      weight: user.weight,
+      height: user.height,
+      bmi: user.bmi,
+      bmiResult: user.bmiResult,
+      gender: user.gender,
+      requireTrainer: user.requireTrainer,
+      package: user.package,
+      important: user.important,
+      haveGymBefore: user.haveGymBefore,
+      enquiryDate: user.enquiryDate
+    });
   }
 }

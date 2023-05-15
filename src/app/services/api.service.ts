@@ -24,6 +24,7 @@ export class ApiService {
   }
 
   getRegisteredUserId(id:number){
-    return this.http.get<user[]>(`${this.baseUrl}/${id}`);
+    // return this.http.get<user[]>(`${this.baseUrl}/${id}`);
+    return this.http.get<user>(`${this.baseUrl}/${id}`);
   }
 }
